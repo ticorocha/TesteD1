@@ -1,0 +1,49 @@
+﻿@model Enderecos
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="_Enderecos">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Tipo" class="control-label"></label>
+                        <select asp-for="Tipo" asp-items="@ViewBag.TipoEnderecos" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="CEPFormatado" class="control-label"></label>
+                        <input asp-for="CEPFormatado" class="form-control" onkeypress="$(this).mask('00000-000');" />
+                        <span asp-validation-for="CEPFormatado" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Numero" class="control-label"></label>
+                        <input asp-for="Numero" class="form-control" />
+                        <span asp-validation-for="Numero" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Complemento" class="control-label"></label>
+                        <input asp-for="Complemento" class="form-control" />
+                        <span asp-validation-for="Complemento" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Referencia" class="control-label"></label>
+                        <input asp-for="Referencia" class="form-control" />
+                        <span asp-validation-for="Referencia" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </form>
+    </div>
+</div>

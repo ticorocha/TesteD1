@@ -1,0 +1,24 @@
+﻿@model Telefones
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="_Telefones">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Tipo" class="control-label"></label>
+                        <select asp-for="Tipo" asp-items="@ViewBag.TipoTelefone" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="TelefoneFormatado" class="control-label"></label>
+                        <input asp-for="TelefoneFormatado" class="form-control" onkeypress="$(this).mask('(00) 00000-0000');" />
+                        <span asp-validation-for="TelefoneFormatado" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

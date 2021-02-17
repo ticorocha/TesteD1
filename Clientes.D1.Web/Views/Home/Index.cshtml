@@ -1,0 +1,70 @@
+﻿@model X.PagedList.IPagedList<Clientes>
+@using X.PagedList.Mvc.Core;
+
+@{
+    ViewData["Title"] = "Lista de Clientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Clientes</h1>
+@Html.Partial("Partial/_Cliente", (Clientes)ViewBag.Cliente)
+<br />
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+    <p>
+        Pesquisar: @Html.TextBox("txtFiltro", ViewBag.filtroAtual as string, new { @class = "control-label" })
+        <input type="submit" value="Buscar" />
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().DataNascimento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().CPFFormatado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().RG)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="bg-light">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataNascimento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CPFFormatado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RG)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Index", new { id = item.Id })
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    @Html.Partial("Partial/_Detalhes", item)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />
+Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, filtroAtual = ViewBag.filtroAtual }), X.PagedList.Web.Common.PagedListRenderOptionsBase.ClassicPlusFirstAndLast)

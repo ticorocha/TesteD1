@@ -1,0 +1,109 @@
+﻿@model Clientes
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RedesSociais.Facebook)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RedesSociais.Linkedin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RedesSociais.Twitter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RedesSociais.Instagran)
+            </th>
+        </tr>
+    </thead>
+    <tbody>        
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.RedesSociais.Facebook)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.RedesSociais.Linkedin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.RedesSociais.Twitter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.RedesSociais.Instagran)
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefones.First().Tipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefones.First().TelefoneFormatado)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Telefones) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelefoneFormatado)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Enderecos.First().Tipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enderecos.First().CEPFormatado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enderecos.First().Endereco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enderecos.First().Numero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enderecos.First().Complemento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enderecos.First().Referencia)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Enderecos)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CEPFormatado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Complemento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Referencia)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

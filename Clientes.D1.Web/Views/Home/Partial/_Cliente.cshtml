@@ -1,0 +1,93 @@
+﻿@model Clientes
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="AddCliente" asp-controller="Home">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="Nome" class="control-label"></label>
+                        <input asp-for="Nome" class="form-control" />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="DataNascimento" class="control-label"></label>
+                        <input type="date" asp-for="DataNascimento" class="form-control" />
+                        <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="CPF" class="control-label"></label>
+                        <input asp-for="CPF" class="form-control" onkeypress="$(this).mask('000.000.000-00');" />
+                        <span asp-validation-for="CPF" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="RG" class="control-label"></label>
+                        <input asp-for="RG" class="form-control" />
+                        <span asp-validation-for="RG" class="text-danger"></span>
+                    </div>
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <br />
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="RedesSociais.Instagran" class="control-label"></label>
+                        <input asp-for="RedesSociais.Instagran" class="form-control" />
+                        <span asp-validation-for="RedesSociais.Instagran" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="RedesSociais.Linkedin" class="control-label"></label>
+                        <input asp-for="RedesSociais.Linkedin" class="form-control" />
+                        <span asp-validation-for="RedesSociais.Linkedin" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="RedesSociais.Facebook" class="control-label"></label>
+                        <input asp-for="RedesSociais.Facebook" class="form-control" />
+                        <span asp-validation-for="RedesSociais.Facebook" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="RedesSociais.Twitter" class="control-label"></label>
+                        <input asp-for="RedesSociais.Twitter" class="form-control" />
+                        <span asp-validation-for="RedesSociais.Twitter" class="text-danger"></span>
+                    </div>
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <br />
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.Partial("Partial/_Telefones", Model.Telefones.FirstOrDefault())
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.Partial("Partial/_Enderecos", Model.Enderecos.FirstOrDefault())
+                </div>
+                
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Id" class="form-control" />
+                <input type="submit" value="Gravar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<hr />
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
